@@ -29,9 +29,9 @@ mod spawn_progress;
 mod state;
 mod suggestions;
 
-/// Returns the terminal width, falling back to 80 columns if unavailable or zero.
-pub(super) fn terminal_width() -> usize {
-    terminal::size().map_or(80, |(w, _)| w as usize).max(1)
+/// Returns the terminal width, falling back to 80 columns if unavailable.
+fn terminal_width() -> usize {
+    terminal::size().map_or(80, |(w, _)| (w as usize).max(1))
 }
 
 pub(crate) use state::LogState;
